@@ -4,11 +4,15 @@
   "description": "Chrome extension for browser tools",
   "private": true,
   "scripts": {
-    "build": "tsc",
-    "type-check": "tsc --noEmit",
-    "watch": "tsc --watch"
+    "build": "tsc && npm run copy-static",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist",
+    "copy-static": "copyfiles -u 0 manifest.json *.html dist",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.262"
+    "@types/chrome": "^0.0.262",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.10"
   }
 }
